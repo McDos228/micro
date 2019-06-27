@@ -14,13 +14,15 @@ services:
       - 8081:8081
   delivery:
     container_name: "delivery"
-     depends_on:
+    image: delivery
+    depends_on:
       - delivery_db
     environment:
       - DB_HOST=delivery_db
-      - PORT=8080
+      - AUTH_HOST=auth
+      - PORT=4200
     ports:
-      - 8080:8080
+      - 4200:4200
   delivery_db:
     image: postgres
     environment:

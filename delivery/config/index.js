@@ -1,6 +1,7 @@
 module.exports = {
+    authHost : process.env.AUTH_HOST,
+    // authHost : 'http://localhost:3000',
     port: process.env.PORT || 4200,
-    secret : 'cool-delivery-secret-key',
     env: process.env.NODE_ENV || 'development',
     database: {
         username: process.env.DB_USERNAME || "postgres",

@@ -2,7 +2,7 @@ const {User} = require('../models/');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(10);
-const config = require('../config/index');
+const {secret} = require('../config/index');
 
 login = async (req, res, next) => {
     try {
@@ -13,7 +13,7 @@ login = async (req, res, next) => {
             let token = jwt.sign({
                 userId: user.dataValues.id,
                 username,
-            }, config.secret, { expiresIn: '1w' })
+            }, secret, { expiresIn: '1w' })
             res.json({token})
         }      
     } catch (error) {
@@ -37,7 +37,19 @@ register = async (req, res, next) => {
     }
 }
 
+checkToken = (req, res, next) =>{
+    try {
+        jwt.verify(req.body.token, secret, (err, decode) => {
+        if(err) throw err
+        res.json(decode)
+    })
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
     login,
-    register
+    register,
+    checkToken
 }

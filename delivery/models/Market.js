@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Goods = sequelize.define('Goods', {
+  const Market = sequelize.define('Market', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -7,9 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     name: DataTypes.STRING
-  }, {timestamp:false});
-  Goods.associate = function(models) {
+  }, {timestamps:false});
+  Market.associate = function(models) {
     // associations can be defined here
   };
-  return Goods;
+  return Market;
 };

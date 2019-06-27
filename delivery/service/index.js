@@ -1,8 +1,8 @@
-const {Good} = require('../models');
+const {Market} = require('../models');
 
 getList = async (req, res, next) => {
     try {
-        res.json(await Good.findAll())
+        res.json(await Market.findAll())
     } catch (error) {
         next(error)
     }
@@ -10,7 +10,7 @@ getList = async (req, res, next) => {
 
 create = async (req, res, next) =>{
     try {
-        res.json(await Good.create({
+        res.json(await Market.create({
             name : res.body.name
         }))
     } catch (error) {
