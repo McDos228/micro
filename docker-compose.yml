@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  auth: 
+    build: ./
+    container_name: "auth"
+    image: auth
+    depends_on:
+      - delivery_db
+    environment:
+      - DB_HOST=delivery_db
+      - PORT=8081
+    ports:
+      - 8081:8081
+  delivery:
+    container_name: "delivery"
+     depends_on:
+      - delivery_db
+    environment:
+      - DB_HOST=delivery_db
+      - PORT=8080
+    ports:
+      - 8080:8080
+  delivery_db:
+    image: postgres
+    environment:
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=password
+      - DB_NAME=delivery
