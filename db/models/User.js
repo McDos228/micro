@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     password : DataTypes.STRING,
     email: DataTypes.STRING
   }, {timestamps:false});
-  User.associate = function(models) {
-    // associations can be defined here
+  User.associate = function({Profile}) {
+    User.hasOne(Profile, {foreignKey:'userId'})
   };
   return User;
 };

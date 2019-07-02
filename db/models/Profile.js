@@ -8,10 +8,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     birthday : DataTypes.DATE,
     phone: DataTypes.STRING,
-    bio: DataTypes.STRING
+    bio: DataTypes.STRING,
+    userId : DataTypes.INTEGER
   }, {timestamps:false});
-  Profile.associate = function(models) {
-    // associations can be defined here
+  Profile.associate = function({User}) {
+    Profile.belongsTo(User, {foreignKey:'userId'})
   };
   return Profile;
 };

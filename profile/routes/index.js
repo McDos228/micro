@@ -1,20 +1,7 @@
-getProfile = (req, res, next) =>{
-    try {
-        
-    } catch (error) {
-        next(error)
-    }
-}
+const {Router} = require('express');
+const {get, create, update} = require('../services/');
 
-updateProfile = (req, res, next) =>{
-    try {
-        
-    } catch (error) {
-        next(error)
-    }
-}
-
-module.exports ={
-    getProfile,
-    updateProfile
-}
+module.exports = Router()
+    .get('/', get)
+    .post('/', create)
+    .put('/', update)

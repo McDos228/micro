@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING
   }, {timestamps:false});
-  Market.associate = function(models) {
-    // associations can be defined here
+  Market.associate = function({Order}) {
+    Market.hasMany(Order, {foreignKey:'marketId'})
   };
   return Market;
 };

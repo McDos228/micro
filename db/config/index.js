@@ -1,6 +1,5 @@
 module.exports = {
-    port: process.env.PORT || 3000,
-    dbHost : 'http://localhost:5000/auth',
+    port: process.env.PORT || 5000,
     secret : 'cool-delivery-secret-key',
     env: process.env.NODE_ENV || 'development',
     database: {

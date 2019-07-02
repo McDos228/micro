@@ -9,7 +9,8 @@ module.exports = {
       },
       birthday : Sequelize.DATE,
       phone: Sequelize.STRING,
-      bio: DataTSequelizeypes.STRING
+      bio: Sequelize.STRING,
+      userId : Sequelize.INTEGER
     });
   },
   down: (queryInterface, Sequelize) => {
